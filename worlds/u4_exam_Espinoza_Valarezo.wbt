@@ -1,14 +1,359 @@
 #VRML_SIM R2019a utf8
 WorldInfo {
-  info [
-  ]
 }
 Viewpoint {
-  orientation -0.7 0.7 0.2 0.75
-  position 1.2 1.6 2.3
-
+  orientation 0.39107287707498406 -0.9017845324684237 -0.18397462275270635 5.321516442770686
+  position 0.41627391510018324 0.3888808136340496 0.3578691982133378
 }
 TexturedBackground {
 }
 TexturedBackgroundLight {
+}
+Floor {
+}
+Robot {
+  translation 0 0.1 0
+  children [
+    DEF BODY_GR Group {
+      children [
+        DEF BODY_SH Shape {
+          appearance PBRAppearance {
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.25501 0.05 0.18
+          }
+        }
+      ]
+    }
+    DEF WHEELS_GR Group {
+      children [
+        DEF WHEEL_1 Transform {
+          translation -0.095505 0 0.105
+          children [
+            HingeJoint {
+              jointParameters HingeJointParameters {
+                axis 0 0 1
+              }
+              endPoint Solid {
+                children [
+                  DEF WHEELS_TR Transform {
+                    rotation 1 0 0 1.5707
+                    children [
+                      DEF WHEELS_SH Shape {
+                        appearance PBRAppearance {
+                          baseColor 0.20392156862745098 0.396078431372549 0.6431372549019608
+                          roughness 1
+                          metalness 0
+                        }
+                        geometry Cylinder {
+                          height 0.03
+                          radius 0.032
+                        }
+                      }
+                    ]
+                  }
+                  DEF SW1_1 HingeJoint {
+                    jointParameters HingeJointParameters {
+                    }
+                    endPoint Solid {
+                      translation 0 0.038 0
+                      rotation 0 0 1 1.57
+                      children [
+                        Transform {
+                          rotation 1 0 0 0.7857
+                          children [
+                            DEF SMALL_WHEEL_SH Shape {
+                              appearance PBRAppearance {
+                                roughness 1
+                                metalness 0
+                              }
+                              geometry Cylinder {
+                                height 0.029
+                                radius 0.007
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                  DEF SW1_2 HingeJoint {
+                    jointParameters HingeJointParameters {
+                      axis -0.7 -0.7 -1
+                      anchor -0.02687 0.02687 0
+                    }
+                    endPoint Solid {
+                      translation -0.02687 0.02687 0
+                      rotation 0 0 -1 0.7850000000000003
+                      children [
+                        DEF SMALL_WHEEL_TR2 Transform {
+                          rotation 1 0 0 0.7853
+                          children [
+                            USE SMALL_WHEEL_SH
+                          ]
+                        }
+                      ]
+                      name "solid(1)"
+                      boundingObject USE SMALL_WHEEL_TR2
+                      physics Physics {
+                      }
+                    }
+                  }
+                  DEF SW1_3 HingeJoint {
+                    jointParameters HingeJointParameters {
+                      axis 0 0.7 0.7
+                      anchor -0.038 0 0
+                    }
+                    endPoint Solid {
+                      translation -0.038 0 0
+                      rotation 1 0 0 0.7852999999999999
+                      children [
+                        USE SMALL_WHEEL_SH
+                      ]
+                      name "solid(2)"
+                      boundingObject USE SMALL_WHEEL_SH
+                      physics Physics {
+                      }
+                    }
+                  }
+                  DEF SW1_4 HingeJoint {
+                    jointParameters HingeJointParameters {
+                      axis -0.7 0.7 1
+                      anchor -0.02687 -0.02687 0
+                    }
+                    endPoint Solid {
+                      translation -0.02687 -0.02687 0
+                      rotation 0 0 -1 5.498185020258747
+                      children [
+                        Transform {
+                          rotation 1 0 0 0.7853
+                          children [
+                            USE SMALL_WHEEL_SH
+                          ]
+                        }
+                      ]
+                      name "solid(3)"
+                      boundingObject USE SMALL_WHEEL_TR2
+                      physics Physics {
+                      }
+                    }
+                  }
+                  DEF SW2_5 HingeJoint {
+                    jointParameters HingeJointParameters {
+                      axis 1 0 -1
+                      anchor 0 -0.038 0
+                    }
+                    endPoint Solid {
+                      translation 0 -0.038 0
+                      rotation 0 0 1 1.57
+                      children [
+                        DEF SMALL_WHEEL_TR5 Transform {
+                          rotation 1 0 0 0.7853
+                          children [
+                            USE SMALL_WHEEL_SH
+                          ]
+                        }
+                      ]
+                      name "solid(4)"
+                      boundingObject USE SMALL_WHEEL_TR5
+                      physics Physics {
+                      }
+                    }
+                  }
+                ]
+                name "solid(1)"
+                boundingObject USE WHEELS_TR
+              }
+            }
+          ]
+        }
+        DEF WHEEL_2 Transform {
+          translation -0.095505 0 -0.105
+          children [
+            HingeJoint {
+              jointParameters HingeJointParameters {
+                axis 0 0 1
+              }
+              endPoint Solid {
+                children [
+                  USE WHEELS_TR
+                  DEF SW2_1 HingeJoint {
+                    jointParameters HingeJointParameters {
+                      axis 1 0 1
+                      anchor 0 0.038 0
+                    }
+                    endPoint Solid {
+                      translation 0 0.038 0
+                      rotation 0 0 1 1.57
+                      children [
+                        DEF SMALL_WHEEL_TR1 Transform {
+                          rotation 1 0 0 -0.7853
+                          children [
+                            USE SMALL_WHEEL_SH
+                          ]
+                        }
+                      ]
+                      boundingObject USE SMALL_WHEEL_TR1
+                      physics Physics {
+                      }
+                    }
+                  }
+                  DEF SW2_2 HingeJoint {
+                    jointParameters HingeJointParameters {
+                      axis -0.7 -0.7 -1
+                      anchor -0.02687 0.02687 0
+                    }
+                    endPoint Solid {
+                      translation -0.02687 0.02687 0
+                      rotation 0 0 -1 0.7850000000000003
+                      children [
+                        DEF SMALL_WHEEL_TR2 Transform {
+                          rotation 1 0 0 0.7853
+                          children [
+                            USE SMALL_WHEEL_SH
+                          ]
+                        }
+                      ]
+                      name "solid(1)"
+                      boundingObject USE SMALL_WHEEL_TR2
+                      physics Physics {
+                      }
+                    }
+                  }
+                  DEF SW2_3 HingeJoint {
+                    jointParameters HingeJointParameters {
+                      axis 0 0.7 0.7
+                      anchor -0.038 0 0
+                    }
+                    endPoint Solid {
+                      translation -0.038 0 0
+                      rotation 1 0 0 0.7852999999999999
+                      children [
+                        USE SMALL_WHEEL_SH
+                      ]
+                      name "solid(2)"
+                      boundingObject USE SMALL_WHEEL_SH
+                      physics Physics {
+                      }
+                    }
+                  }
+                  DEF SW2_4 HingeJoint {
+                    jointParameters HingeJointParameters {
+                      axis -0.7 0.7 1
+                      anchor -0.02687 -0.02687 0
+                    }
+                    endPoint Solid {
+                      translation -0.02687 -0.02687 0
+                      rotation 0 0 -1 5.498185020258747
+                      children [
+                        Transform {
+                          rotation 1 0 0 0.7853
+                          children [
+                            USE SMALL_WHEEL_SH
+                          ]
+                        }
+                      ]
+                      name "solid(3)"
+                      boundingObject USE SMALL_WHEEL_TR2
+                      physics Physics {
+                      }
+                    }
+                  }
+                  DEF SW2_5 HingeJoint {
+                    jointParameters HingeJointParameters {
+                      axis 1 0 -1
+                      anchor 0 -0.038 0
+                    }
+                    endPoint Solid {
+                      translation 0 -0.038 0
+                      rotation 0 0 1 1.57
+                      children [
+                        DEF SMALL_WHEEL_TR5 Transform {
+                          rotation 1 0 0 0.7853
+                          children [
+                            USE SMALL_WHEEL_SH
+                          ]
+                        }
+                      ]
+                      name "solid(4)"
+                      boundingObject USE SMALL_WHEEL_TR5
+                      physics Physics {
+                      }
+                    }
+                  }
+                  DEF SW2_6 HingeJoint {
+                    jointParameters HingeJointParameters {
+                      axis -0.7 -0.7 1
+                      anchor 0.02687 -0.02687 0
+                    }
+                    endPoint Solid {
+                      translation 0.02687 -0.02687 0
+                      rotation 0 0 1 5.498185020258747
+                      children [
+                        DEF SMALL_WHEEL_TR6 Transform {
+                          rotation 1 0 0 -0.7853
+                          children [
+                            USE SMALL_WHEEL_SH
+                          ]
+                        }
+                      ]
+                      name "solid(5)"
+                      boundingObject USE SMALL_WHEEL_TR6
+                      physics Physics {
+                      }
+                    }
+                  }
+                  DEF SW2_7 HingeJoint {
+                    jointParameters HingeJointParameters {
+                      axis 0 -0.7 0.7
+                      anchor 0.038 0 0
+                    }
+                    endPoint Solid {
+                      translation 0.038 0 0
+                      rotation -1 0 0 0.7852999999999999
+                      children [
+                        USE SMALL_WHEEL_SH
+                      ]
+                      name "solid(6)"
+                      boundingObject USE SMALL_WHEEL_SH
+                      physics Physics {
+                      }
+                    }
+                  }
+                  DEF SW2_8 HingeJoint {
+                    jointParameters HingeJointParameters {
+                      axis -0.7 0.7 -1
+                      anchor 0.02687 0.02687 0
+                    }
+                    endPoint Solid {
+                      translation 0.02687 0.02687 0
+                      rotation 0 0 1 0.7850000000000003
+                      children [
+                        DEF SMALL_WHEEL_TR8 Transform {
+                          rotation 1 0 0 -0.7853
+                          children [
+                            USE SMALL_WHEEL_SH
+                          ]
+                        }
+                      ]
+                      name "solid(7)"
+                      boundingObject USE SMALL_WHEEL_TR8
+                      physics Physics {
+                      }
+                    }
+                  }
+                ]
+                boundingObject USE WHEELS_TR
+              }
+            }
+          ]
+        }
+        Transform {
+          rotation 0 1 0 3.403392031
+        }
+      ]
+    }
+  ]
 }
