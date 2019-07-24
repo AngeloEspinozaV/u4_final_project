@@ -2,8 +2,9 @@
 WorldInfo {
 }
 Viewpoint {
-  orientation -1 0 0 1.5707963267948966
-  position -0.04275068532693102 2.2168772514053963 0.01565587198133766
+  orientation -0.1945297732982372 0.9631727467485568 0.18562442517453606 1.5614798910643906
+  position 2.5407485814578217 1.6157114488542577 0.08942766353443277
+  follow "robot"
 }
 TexturedBackground {
 }
@@ -42,11 +43,10 @@ Robot {
                   maxVelocity 10.4719
                   maxTorque 0.14709975
                 }
-                PositionSensor {
-                }
               ]
               endPoint Solid {
-                rotation 0 0 1 0
+                translation 5.7142118118115226e-05 -4.942537504638874e-05 -5.7382334370248416e-08
+                rotation -1.4013221568832349e-05 -4.035167264397196e-06 -0.9999999998936735 0.012249621958497598
                 children [
                   DEF WHEELS_TR Transform {
                     rotation 1 0 0 1.5707
@@ -84,7 +84,7 @@ Robot {
                               }
                               geometry Cylinder {
                                 height 0.029
-                                radius 0.007
+                                radius 0.01
                               }
                             }
                           ]
@@ -265,8 +265,8 @@ Robot {
                 }
               ]
               endPoint Solid {
-                translation 1.5478190644381256e-06 2.5180210824234887e-05 1.1124842801135679e-07
-                rotation -0.003049344148150563 0.00018306125127597528 -0.9999953339835363 5.7892144637810125e-05
+                translation 6.075317281830919e-05 -2.0027245041104856e-06 4.476914767098661e-07
+                rotation -7.181386465751999e-06 2.320027523356757e-05 -0.9999999997050876 0.010056667289969443
                 children [
                   USE WHEELS_TR
                   DEF SW2_1 HingeJoint {
@@ -454,7 +454,8 @@ Robot {
                 }
               ]
               endPoint Solid {
-                rotation 0 0 1 0
+                translation 5.6834545354819976e-05 -3.501940407738051e-05 1.0338544323418296e-07
+                rotation 2.195090586650792e-05 3.5569355372706175e-05 -0.9999999991264893 0.011032476444313342
                 children [
                   USE WHEELS_TR
                   DEF SW3_1 HingeJoint {
@@ -648,8 +649,8 @@ Robot {
                 }
               ]
               endPoint Solid {
-                translation 1.996687295754892e-06 2.7228371905514378e-05 1.44153978587358e-07
-                rotation 0.003281637869744381 -0.0003613376333254523 -0.9999945501291527 5.7304263214969195e-05
+                translation 6.993732265905546e-05 -8.643000714131897e-07 1.5491658217348106e-07
+                rotation -5.471276580499068e-06 -5.638501075758191e-06 -0.9999999999691362 0.01022511977405799
                 children [
                   USE WHEELS_TR
                   DEF SW4_1 HingeJoint {
@@ -701,7 +702,7 @@ Robot {
                     }
                     endPoint Solid {
                       translation -0.03800215024731562 -5.28463760726977e-08 1.7071369876527504e-08
-                      rotation -0.0013148671124525925 -0.9238657469149226 0.3827144533484574 3.1352422600982877
+                      rotation -0.0013148671124525954 -0.9238657469149224 0.3827144533484581 3.1352422600982877
                       children [
                         USE SMALL_WHEEL_SH
                       ]
@@ -903,9 +904,68 @@ Robot {
         }
       ]
     }
+    DEF HC-SR04 DistanceSensor {
+      translation -0.12 0.035 0
+      rotation 0 1 0 3.1415
+      children [
+        DEF DISTANCE_SENSOR_SH Shape {
+          appearance PBRAppearance {
+            baseColor 0.2519569695582513 0.39000534065766385 0.2404974441138323
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.015 0.02 0.043
+          }
+        }
+        Transform {
+          translation 0 0 -0.01
+          rotation 0 0 1 1.57
+          children [
+            DEF CIRCLES_SH Shape {
+              appearance PBRAppearance {
+                baseColor 0 0 0
+                roughness 1
+                metalness 0
+              }
+              geometry Cylinder {
+                height 0.0155
+                radius 0.003
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0 0 0.01
+          rotation 0 0 1 1.57
+          children [
+            USE CIRCLES_SH
+          ]
+        }
+      ]
+      name "distance_sensor"
+      lookupTable [
+        0 0 0
+        0.02 0 0
+        5 1660 0
+      ]
+    }
   ]
   boundingObject USE BODY_GR
   physics Physics {
   }
   controller "u4_exam_Espinoza_Angelo"
+}
+Solid {
+  translation -1 0.14 0
+  children [
+    DEF OBSTACLE_SH Shape {
+      appearance PBRAppearance {
+      }
+      geometry Box {
+        size 0.25 0.25 0.25
+      }
+    }
+  ]
+  boundingObject USE OBSTACLE_SH
 }
