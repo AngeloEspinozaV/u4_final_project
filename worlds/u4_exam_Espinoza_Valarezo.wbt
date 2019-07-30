@@ -2,8 +2,8 @@
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.1945297732982372 0.9631727467485568 0.18562442517453606 1.5614798910643906
-  position 2.5407485814578217 1.6157114488542577 0.08942766353443277
+  orientation -0.26673467604149986 0.9274522561834635 0.2620780896932042 1.6284663649832654
+  position 0.8697160864974882 0.8761282841252356 0.011001974740976972
   follow "robot"
 }
 TexturedBackground {
@@ -261,8 +261,6 @@ Robot {
                   maxVelocity 10.4719
                   maxTorque 0.14709975
                 }
-                PositionSensor {
-                }
               ]
               endPoint Solid {
                 translation 6.075317281830919e-05 -2.0027245041104856e-06 4.476914767098661e-07
@@ -451,6 +449,8 @@ Robot {
                   maxTorque 0.14709975
                 }
                 PositionSensor {
+                  name "position_sensor1"
+                  resolution 0.3141592
                 }
               ]
               endPoint Solid {
@@ -646,6 +646,8 @@ Robot {
                   maxTorque 0.14709975
                 }
                 PositionSensor {
+                  name "position_sensor2"
+                  resolution 0.314159
                 }
               ]
               endPoint Solid {
@@ -702,7 +704,7 @@ Robot {
                     }
                     endPoint Solid {
                       translation -0.03800215024731562 -5.28463760726977e-08 1.7071369876527504e-08
-                      rotation -0.0013148671124525954 -0.9238657469149224 0.3827144533484581 3.1352422600982877
+                      rotation -0.0013148671124526125 -0.9238657469149206 0.3827144533484625 3.1352422600982877
                       children [
                         USE SMALL_WHEEL_SH
                       ]
@@ -904,9 +906,9 @@ Robot {
         }
       ]
     }
-    DEF HC-SR04 DistanceSensor {
-      translation -0.12 0.035 0
-      rotation 0 1 0 3.1415
+    DEF HC-SR04_LEFT DistanceSensor {
+      translation -0.12 0.035 0.05
+      rotation 0 1 0 3.22886
       children [
         DEF DISTANCE_SENSOR_SH Shape {
           appearance PBRAppearance {
@@ -943,7 +945,34 @@ Robot {
           ]
         }
       ]
-      name "distance_sensor"
+      name "distance_sensor1"
+      lookupTable [
+        0 0 0
+        0.02 0 0
+        5 1660 0
+      ]
+    }
+    DEF HC-SR04_RIGHT DistanceSensor {
+      translation -0.12 0.035 -0.05
+      rotation 0 1 0 -3.22886
+      children [
+        USE DISTANCE_SENSOR_SH
+        Transform {
+          translation 0 0 -0.01
+          rotation 0 0 1 1.57
+          children [
+            USE CIRCLES_SH
+          ]
+        }
+        Transform {
+          translation 0 0 0.01
+          rotation 0 0 1 1.57
+          children [
+            USE CIRCLES_SH
+          ]
+        }
+      ]
+      name "distance_sensor2"
       lookupTable [
         0 0 0
         0.02 0 0
@@ -957,7 +986,7 @@ Robot {
   controller "u4_exam_Espinoza_Angelo"
 }
 Solid {
-  translation -1 0.14 0
+  translation -1 0.14 0.14
   children [
     DEF OBSTACLE_SH Shape {
       appearance PBRAppearance {
@@ -967,5 +996,19 @@ Solid {
       }
     }
   ]
+  boundingObject USE OBSTACLE_SH
+}
+Solid {
+  translation -1.3000000000000003 0.14 -0.4299999999999997
+  children [
+    DEF OBSTACLE_SH Shape {
+      appearance PBRAppearance {
+      }
+      geometry Box {
+        size 0.25 0.25 0.25
+      }
+    }
+  ]
+  name "solid(1)"
   boundingObject USE OBSTACLE_SH
 }
