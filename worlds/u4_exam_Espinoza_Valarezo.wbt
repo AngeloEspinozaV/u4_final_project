@@ -2,8 +2,8 @@
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.26673467604149986 0.9274522561834635 0.2620780896932042 1.6284663649832654
-  position 0.8697160864974882 0.8761282841252356 0.011001974740976972
+  orientation -0.385813153562964 0.8345464918525516 0.3932942454122608 1.7695464420845786
+  position 1.320680831068386 2.28929414506706 -0.01871217414446502
   follow "robot"
 }
 TexturedBackground {
@@ -704,7 +704,7 @@ Robot {
                     }
                     endPoint Solid {
                       translation -0.03800215024731562 -5.28463760726977e-08 1.7071369876527504e-08
-                      rotation -0.0013148671124526125 -0.9238657469149206 0.3827144533484625 3.1352422600982877
+                      rotation -0.0013148671124526283 -0.9238657469149189 0.38271445334846654 3.1352422600982877
                       children [
                         USE SMALL_WHEEL_SH
                       ]
@@ -999,7 +999,7 @@ Solid {
   boundingObject USE OBSTACLE_SH
 }
 Solid {
-  translation -1.3000000000000003 0.14 -0.4299999999999997
+  translation -1.3000000000000003 0.14 -0.24999999999999975
   children [
     DEF OBSTACLE_SH Shape {
       appearance PBRAppearance {
@@ -1010,5 +1010,19 @@ Solid {
     }
   ]
   name "solid(1)"
+  boundingObject USE OBSTACLE_SH
+}
+Solid {
+  translation -1.3000000000000003 0.14 -1.27
+  children [
+    DEF OBSTACLE_SH Shape {
+      appearance PBRAppearance {
+      }
+      geometry Box {
+        size 0.25 0.25 0.25
+      }
+    }
+  ]
+  name "solid(2)"
   boundingObject USE OBSTACLE_SH
 }
