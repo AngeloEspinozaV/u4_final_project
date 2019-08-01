@@ -266,7 +266,7 @@ float metersSec2RadSec(float meters_per_second) {
 float distanceTraveled(float radius, WbDeviceTag position_sensor1,
                        WbDeviceTag position_sensor2) {
     circunference = radius * (2 * PI);
-    
+
     if (revolutionToRadians(wb_position_sensor_get_value(position_sensor2)) >= 6){
         distance_traveled = distance_traveled + circunference;
     }
@@ -359,7 +359,7 @@ void autonomous(WbDeviceTag motor_1, WbDeviceTag motor_2,
         < ds_right_value) {
         counter_left++;
     }
-    if (counter_left >= 1 && counter_left <= 60) {
+    if (counter_left >= 1 && counter_left <= 70) {
         turnRightRobot(motor_1, motor_2, motor_3, motor_4);
         printf("Degrees/s are: %ddeg/s\n", TURN_RATIO);
         counter_left++;
@@ -373,7 +373,7 @@ void autonomous(WbDeviceTag motor_1, WbDeviceTag motor_2,
         counter_right++;
     }
 
-    if (counter_right >= 1 && counter_right <= 60) {
+    if (counter_right >= 1 && counter_right <= 70) {
         turnLeftRobot(motor_1, motor_2, motor_3, motor_4);
         printf("Degrees/s are: %d deg/s\n", TURN_RATIO);
         counter_right++;
