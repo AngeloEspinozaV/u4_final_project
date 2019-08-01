@@ -66,7 +66,7 @@
 ### VERBOSE = 1
 ###
 ###-----------------------------------------------------------------------------
-C_SOURCES = u4_final_project.c
+C_SOURCES = u4_final_project.c control.c
 ### Do not modify: this includes Webots global Makefile.include
 space :=
 space +=

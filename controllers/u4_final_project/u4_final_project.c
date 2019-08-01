@@ -15,6 +15,9 @@
 /* C LIBRARIES */
 #include <stdio.h>
 
+/* MY LIBRARIES */
+#include "control.h"
+
 #define TIME_STEP 64
 #define MAX_BITS 1660
 #define RADIUS_WHEELS 0.04
